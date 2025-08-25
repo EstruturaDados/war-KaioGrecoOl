@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <string.h>
 // ============================================================================
 //         PROJETO WAR ESTRUTURADO - DESAFIO DE CÓDIGO
 // ============================================================================
@@ -29,9 +31,44 @@
 // Funções de lógica principal do jogo:
 // Função utilitária:
 
+typedef struct {
+    char nome[30];
+    char cor[10];
+    int tropas;
+} Territorio;
+
 // --- Função Principal (main) ---
 // Função principal que orquestra o fluxo do jogo, chamando as outras funções em ordem.
 int main() {
+    Territorio territorios[5]; // Vetor para armazenar 5 territórios
+    int i;
+
+    printf("=== Cadastro de Territórios ===\n");
+
+    // Entrada de dados para os 5 territórios
+    for (i = 0; i < 5; i++) {
+        printf("\n--- Território %d ---\n", i + 1);
+
+        printf("Digite o nome do território: ");
+        scanf("%s", territorios[i].nome);
+
+        printf("Digite a cor do exército: ");
+        scanf("%s", territorios[i].cor);
+
+        printf("Digite o número de tropas: ");
+        scanf("%d", &territorios[i].tropas);
+    }
+
+    // Exibição dos dados cadastrados
+    printf("\n=== Lista de Territórios Cadastrados ===\n");
+    for (i = 0; i < 5; i++) {
+        printf("\nTerritório %d:\n", i + 1);
+        printf("Nome: %s\n", territorios[i].nome);
+        printf("Cor do Exército: %s\n", territorios[i].cor);
+        printf("Número de Tropas: %d\n", territorios[i].tropas);
+    }
+
+    return 0;
     // 1. Configuração Inicial (Setup):
     // - Define o locale para português.
     // - Inicializa a semente para geração de números aleatórios com base no tempo atual.
@@ -51,7 +88,6 @@ int main() {
     // 3. Limpeza:
     // - Ao final do jogo, libera a memória alocada para o mapa para evitar vazamentos de memória.
 
-    return 0;
 }
 
 // --- Implementação das Funções ---
